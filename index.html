@@ -59,6 +59,8 @@
     th {
       background-color: #3c6e36;
       color: #f0f0f0;
+      cursor: pointer;
+      user-select: none;
     }
     tr:hover {
       background-color: #44474b;
@@ -68,8 +70,8 @@
       gap: 6px;
     }
     .mons img {
-      width: 50px;
-      height: 50px;
+      width: 59px;
+      height: 59px;
     }
     a.button {
       display: inline-block;
@@ -85,14 +87,42 @@
     }
   </style>
   <script>
+    // filter searches player names, MVP and team Pokémon
     function filterTable() {
       const input = document.getElementById('searchBar').value.toLowerCase();
       const rows = document.querySelectorAll('tbody tr');
       rows.forEach(row => {
+        const player = row.cells[0].innerText.toLowerCase();
+        const mvp = row.cells[1].innerText.toLowerCase();
         const mons = row.querySelectorAll('.mons img');
-        const found = Array.from(mons).some(img => img.alt.toLowerCase().includes(input));
-        row.style.display = found || input === '' ? '' : 'none';
+        const foundInMons = Array.from(mons).some(img => img.alt.toLowerCase().includes(input));
+        const foundInName = player.includes(input) || mvp.includes(input);
+        row.style.display = (foundInMons || foundInName || input === '') ? '' : 'none';
       });
+    }
+
+    // stable numeric sort for a given column index (toggle asc/desc)
+    function sortTable(columnIndex) {
+      const tbody = document.querySelector('table tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      // toggle sort direction on header element
+      const th = document.querySelectorAll('th')[columnIndex];
+      const current = th.dataset.sortDir === 'asc' ? 'asc' : 'desc';
+      const dir = current === 'asc' ? 'desc' : 'asc';
+      document.querySelectorAll('th').forEach(h => delete h.dataset.sortDir);
+      th.dataset.sortDir = dir;
+
+      rows.sort((a, b) => {
+        const aText = a.children[columnIndex].innerText.trim();
+        const bText = b.children[columnIndex].innerText.trim();
+        const aNum = parseInt(aText, 10) || 0;
+        const bNum = parseInt(bText, 10) || 0;
+        return dir === 'asc' ? aNum - bNum : bNum - aNum;
+      });
+
+      // re-append rows in new order
+      rows.forEach(r => tbody.appendChild(r));
     }
   </script>
 </head>
@@ -101,7 +131,7 @@
   <nav>
     <a href="#">Hall Of Fame (Ancestral X)</a>
   </nav>
-  <input type="text" id="searchBar" onkeyup="filterTable()" placeholder="Search for a Pokémon...">
+  <input type="text" id="searchBar" onkeyup="filterTable()" placeholder="Search for a Pokémon or Player...">
   <table>
     <thead>
       <tr>
@@ -109,8 +139,8 @@
         <th>MVP</th>
         <th>Team</th>
         <th>Version</th>
-        <th>Attempts</th>
-        <th>Deaths</th>
+        <th onclick="sortTable(4)">Attempts ⬍</th>
+        <th onclick="sortTable(5)">Deaths ⬍</th>
         <th>Run</th>
       </tr>
     </thead>
