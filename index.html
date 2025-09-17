@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Ancestral X - Hall of Fame</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2b2d30;
+      color: #3c6e36;
+      margin: 0;
+      padding: 2rem;
+      font-size: 1.2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #3c6e36;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    nav a {
+      color: #3c6e36;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: 2px solid #3c6e36;
+      border-radius: 8px;
+    }
+    nav a:hover {
+      background-color: #3c6e36;
+      color: #ffffff;
+    }
+    #searchBar {
+      display: block;
+      margin: 0 auto 2rem auto;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 500px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #35373a;
+      border: 2px solid #3c6e36;
+      box-shadow: 0 0 12px #3c6e36;
+    }
+    th, td {
+      text-align: left;
+      padding: 16px;
+      border-bottom: 1px solid #3c6e36;
+    }
+    th {
+      background-color: #3c6e36;
+      color: #f0f0f0;
+    }
+    tr:hover {
+      background-color: #44474b;
+    }
+    .mons {
+      display: flex;
+      gap: 6px;
+    }
+    .mons img {
+      width: 50px;
+      height: 50px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background-color: #3c6e36;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    a.button:hover {
+      background-color: #4d8f4d;
+    }
+  </style>
+  <script>
+    function filterTable() {
+      const input = document.getElementById('searchBar').value.toLowerCase();
+      const rows = document.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const mons = row.querySelectorAll('.mons img');
+        const found = Array.from(mons).some(img => img.alt.toLowerCase().includes(input));
+        row.style.display = found || input === '' ? '' : 'none';
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Pokémon Ancestral X - Hall of Fame</h1>
+  <nav>
+    <a href="#">Hall Of Fame (Ancestral X)</a>
+  </nav>
+  <input type="text" id="searchBar" onkeyup="filterTable()" placeholder="Search for a Pokémon...">
+  <table>
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>MVP</th>
+        <th>Team</th>
+        <th>Version</th>
+        <th>Attempts</th>
+        <th>Deaths</th>
+        <th>Run</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dingus</td>
+        <td>Mega Banette</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/banette-mega.png" alt="Mega Banette">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+            <img src="https://img.pokemondb.net/sprites/home/normal/snorlax.png" alt="Snorlax">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/heliolisk.png" alt="Heliolisk">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+          </div>
+        </td>
+        <td>1.2</td> 
+        <td>20</td>
+        <td>5</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=hRcoF_R62ow" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>MDM</td>
+        <td>Serperior</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/cofagrigus.png" alt="Cofagrigus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/serperior.png" alt="Serperior">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gliscor.png" alt="Gliscor">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/heatran.png" alt="Heatran">
+          </div>
+        </td>
+        <td>1.2</td>
+        <td>15</td>
+        <td>11</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      <tr>
+        <td>Jolly9</td>
+        <td>Beheeyem</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sharpedo.png" alt="Sharpedo">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/electivire.png" alt="Electivire">
+            <img src="https://img.pokemondb.net/sprites/home/normal/torkoal.png" alt="Torkoal">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gyarados.png" alt="Gyarados">
+            <img src="https://img.pokemondb.net/sprites/home/normal/beheeyem.png" alt="Beheeyem">
+          </div>
+        </td>
+        <td>1.4</td>
+        <td>50</td>
+        <td>0</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      <tr>
+        <td>Sean</td>
+        <td>Charizard</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/seismitoad.png" alt="Seismitoad">
+            <img src="https://img.pokemondb.net/sprites/home/normal/metagross.png" alt="Metagross">
+            <img src="https://img.pokemondb.net/sprites/home/normal/excadrill.png" alt="Excadrill">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chesnaught.png" alt="Chesnaught">
+          </div>
+        </td>
+        <td>1.4</td>
+        <td>6</td>
+        <td>7</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=Dfh5SHNp1MM" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>Axelle Ratio</td>
+        <td>Aurorus</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/volcarona.png" alt="Volcarona">
+            <img src="https://img.pokemondb.net/sprites/home/normal/banette.png" alt="Banette">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+          </div>
+        </td>
+        <td>1.4</td>
+        <td>20</td>
+        <td>20</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=Dfh5SHNp1MM" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>Trusty Peaches</td>
+        <td>Plusle</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/quagsire.png" alt="Quagsire">
+            <img src="https://img.pokemondb.net/sprites/home/normal/diggersby.png" alt="Diggersby">
+            <img src="https://img.pokemondb.net/sprites/home/normal/plusle.png" alt="Plusle">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/starmie.png" alt="Starmie">
+            <img src="https://img.pokemondb.net/sprites/home/normal/talonflame.png" alt="Talonflame">
+          </div>
+        </td>
+        <td>1.4</td>
+        <td>4</td>
+        <td>7</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <tr>
+        <td>Whacko</td>
+        <td>Zygarde</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/zygarde.png" alt="Zygarde">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aggron.png" alt="Aggron">
+            <img src="https://img.pokemondb.net/sprites/home/normal/milotic.png" alt="Milotic">
+            <img src="https://img.pokemondb.net/sprites/home/normal/togekiss.png" alt="Togekiss">
+            <img src="https://img.pokemondb.net/sprites/home/normal/qwilfish.png" alt="Qwilfish">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ferrothorn.png" alt="Ferrothorn">
+          </div>
+        </td>
+        <td>?</td>
+        <td>50</td>
+        <td>17</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=R2cb_C1bAvo&t=646s" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>Vale</td>
+        <td>Swampert</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chansey.png" alt="Chansey">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aegislash.png" alt="Aegislash">
+            <img src="https://img.pokemondb.net/sprites/home/normal/mawile.png" alt="Mawile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/shuckle.png" alt="Shuckle">
+            <img src="https://img.pokemondb.net/sprites/home/normal/skarmory.png" alt="Heliolisk">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+          </div>
+        </td>
+        <td>1.0</td> 
+        <td>5</td>
+        <td>3</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      <tr>
+        <td>Albab</td>
+        <td>Manaphy</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gardevoir.png" alt="Gardevoir">
+            <img src="https://img.pokemondb.net/sprites/home/normal/manaphy.png" alt="Manaphy">
+            <img src="https://img.pokemondb.net/sprites/home/normal/dedenne.png" alt="Dedenne">
+            <img src="https://img.pokemondb.net/sprites/home/normal/togekiss.png" alt="Togekiss">
+            <img src="https://img.pokemondb.net/sprites/home/normal/mawile.png" alt="Mawile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lilligant.png" alt="Lilligant">
+          </div>
+        </td>
+        <td>1.0</td> 
+        <td>7</td>
+        <td>21</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      <tr>
+        <td>Something_Smart</td>
+        <td>Sableye</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lucario.png" alt="Lucario">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/greninja.png" alt="Greninja">
+            <img src="https://img.pokemondb.net/sprites/home/normal/whiscash.png" alt="Whiscash">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lilligant.png" alt="Lilligant">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sableye.png" alt="Sableye">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>2</td>
+        <td>5</td>
+        <td><a class="button" href="https://www.twitch.tv/something_smart_" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>Riptide</td>
+        <td>Excadrill</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/excadrill.png" alt="Excadrill">
+            <img src="https://img.pokemondb.net/sprites/home/normal/qwilfish.png" alt="Qwilfish">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ferrothorn.png" alt="Ferrothorn">
+            <img src="https://img.pokemondb.net/sprites/home/normal/greninja.png" alt="Greninja">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+          </div>
+        </td>
+        <td>2.0.1</td> 
+        <td>2</td>
+        <td>24</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=rkq4bowS3EE" target="_blank">Watch</a></td>
+      </tr>
+      <tr>
+        <td>Devils_Slave</td>
+        <td>Probopass</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sceptile.png" alt="Sceptile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/zekrom.png" alt="zekrom">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+            <img src="https://img.pokemondb.net/sprites/home/normal/banette.png" alt="Banette">
+          </div>
+        </td>
+        <td>1.2</td> 
+        <td>12</td>
+        <td>16</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      <td>Mordred</td>
+        <td>Typhlosion</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aggron.png" alt="Aggron">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/typhlosion.png" alt="Typhlosion">
+            <img src="https://img.pokemondb.net/sprites/home/normal/nidoking.png" alt="Nidoking">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+          </div>
+        </td>
+        <td>?</td> 
+        <td>42</td>
+        <td>16</td>
+        <td><a class="button" href="https://www.twitch.tv/betamet" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Notahorse</td>
+        <td>Sceptile-Mega</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sceptile-mega.png" alt="Sceptile-Mega">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lucario.png" alt="Lucario">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ferrothorn.png" alt="Ferrothorn">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/glaceon.png" alt="Glaceon">
+          </div>
+        </td>
+        <td>1.4.5</td> 
+        <td>15</td>
+        <td>10</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>CatsuneNiku</td>
+        <td>Gliscor</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/tentacruel.png" alt="Tentacruel">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aggron.png" alt="Aggron">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gliscor.png" alt="Gliscor">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>38</td>
+        <td>23</td>
+        <td><a class="button" href="https://www.twitch.tv/catsuneniku" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Polodarue</td>
+        <td>Cinccino</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/darmanitan-zen.png" alt="Darmanitan-Zen">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swanna.png" alt="swanna">
+            <img src="https://img.pokemondb.net/sprites/home/normal/beheeyem.png" alt="Beheeyem">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/cinccino.png" alt="Cinccino">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+          </div>
+        </td>
+        <td>2.0</td> 
+        <td>58</td>
+        <td>27</td>
+        <td><a class="button" href="https://www.twitch.tv/polodarue" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>EthylBenzene</td>
+        <td>Charizard</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lilligant.png" alt="Lilligant">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ferrothorn.png" alt="Ferrothorn">
+            <img src="https://img.pokemondb.net/sprites/home/normal/salamence.png" alt="Salamence">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blissey.png" alt="Blissey">
+          </div>
+        </td>
+        <td>1.3</td> 
+        <td>20</td>
+        <td>9</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Catt</td>
+        <td>Garchomp</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gliscor.png" alt="Gliscor">
+            <img src="https://img.pokemondb.net/sprites/home/normal/politoed.png" alt="Politoed">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+            <img src="https://img.pokemondb.net/sprites/home/normal/garchomp.png" alt="Garchomp">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lilligant.png" alt="Lilligant">
+          </div>
+        </td>
+        <td>2.0</td> 
+        <td>1</td>
+        <td>12</td>
+        <td><a class="button" href="https://www.twitch.tv/cattmarp" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Fastwalker</td>
+        <td>Lumineon</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chandelure.png" alt="Chandelure">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gardevoir.png" alt="Gardevoir">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" alt="Lumineon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/houndoom.png" alt="Houndoom">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sceptile.png" alt="Sceptile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>1</td>
+        <td>13</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Croxdark12</td>
+        <td>Aerodactyl</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gardevoir.png" alt="Infernape">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" alt="Lumineon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chesnaught.png" alt="chesnaught">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aerodactyl.png" alt="Aerodactyl">
+            <img src="https://img.pokemondb.net/sprites/home/normal/politoed.png" alt="Politoed">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>9</td>
+        <td>13</td>
+        <td><a class="button" href="https://www.twitch.tv/croxdark12" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Mava</td>
+        <td>Charizard</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/mawile.png" alt="Mawile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/politoed.png" alt="Politoed">
+            <img src="https://img.pokemondb.net/sprites/home/normal/glalie.png" alt="Glalie">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lanturn.png" alt="Lanturn">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>4</td>
+        <td>15</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=TnOl6Ietbxg" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Snef</td>
+        <td>Thundurus</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/delibird.png" alt="delibird">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/tyranitar.png" alt="Tyranitar">
+            <img src="https://img.pokemondb.net/sprites/home/normal/thundurus.png" alt="Thundurus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/magmortar.png" alt="Magmortar">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lopunny.png" alt="lopunny">
+          </div>
+        </td>
+        <td>1.4</td> 
+        <td>4</td>
+        <td>15</td>
+        <td><a class="button" href="https://www.twitch.tv/snef69" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>CamoDragonoid</td>
+        <td>Gallade</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gallade.png" alt="gallade">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/talonflame.png" alt="Talonflame">
+            <img src="https://img.pokemondb.net/sprites/home/normal/togekiss.png" alt="Togekiss">
+            <img src="https://img.pokemondb.net/sprites/home/normal/drapion.png" alt="Drapion">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aggron.png" alt="Aggron">
+          </div>
+        </td>
+        <td>2.0.1</td> 
+        <td>10</td>
+        <td>8</td>
+        <td><a class="button" href="https://www.twitch.tv/camodragonoid02" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Otek</td>
+        <td>Salamence</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/salamence.png" alt="Salamence">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" alt="Lumineon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/milotic.png" alt="Milotic">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/electrode.png" alt="electrode">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gigalith.png" alt="Gigalith">
+          </div>
+        </td>
+        <td>2.0.1</td> 
+        <td>10</td>
+        <td>22</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=XRWOwPd3V2o" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Popcorn</td>
+        <td>Zangoose</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/togekiss.png" alt="Togekiss">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ninetales.png" alt="Ninetales">
+            <img src="https://img.pokemondb.net/sprites/home/normal/zangoose.png" alt="Zangoose">
+            <img src="https://img.pokemondb.net/sprites/home/normal/slowbro.png" alt="slowbro">
+            <img src="https://img.pokemondb.net/sprites/home/normal/roserade.png" alt="Roserade">
+          </div>
+        </td>
+        <td>1.5</td> 
+        <td>5</td>
+        <td>12</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Mountain</td>
+        <td>Blaziken</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/politoed.png" alt="Politoed">
+            <img src="https://img.pokemondb.net/sprites/home/normal/castform.png" alt="Castform">
+            <img src="https://img.pokemondb.net/sprites/home/normal/galvantula.png" alt="Galvatula">
+            <img src="https://img.pokemondb.net/sprites/home/normal/metagross.png" alt="Metagross">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>12</td>
+        <td>4</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Chape</td>
+        <td>Gastrodon</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/garchomp.png" alt="Garchomp">
+            <img src="https://img.pokemondb.net/sprites/home/normal/salamence.png" alt="Salamence">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ferrothorn.png" alt="Ferrothorn">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lilligant.png" alt="lilligant">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gastrodon.png" alt="Gastrodon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/castform.png" alt="Castform">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>11</td>
+        <td>23</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Thedeadobsesor</td>
+        <td>Pelipper</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/galvantula.png" alt="Galvatula">
+            <img src="https://img.pokemondb.net/sprites/home/normal/togekiss.png" alt="Togekiss">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/pelipper.png" alt="Pelipper">
+            <img src="https://img.pokemondb.net/sprites/home/normal/milotic.png" alt="Milotic">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gallade.png" alt="Gallade">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>?</td>
+        <td>13</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Snomunism</td>
+        <td>Blaziken</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/diancie.png" alt="Diancie">
+            <img src="https://img.pokemondb.net/sprites/home/normal/probopass.png" alt="Probopass">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/staraptor.png" alt="Staraptor">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/castform.png" alt="Castform">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>4</td>
+        <td>13</td>
+        <td><a class="button" href="https://www.twitch.tv/snomunism_" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>JTSpeed</td>
+        <td>Swampert</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/crobat.png" alt="Crobat">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/skarmory.png" alt="Skarmory">
+            <img src="https://img.pokemondb.net/sprites/home/normal/delphox.png" alt="Delphox">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lucario.png" alt="Lucario">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>5</td>
+        <td>10</td>
+        <td><a class="button" href="https://www.twitch.tv/jtspeed" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>TheNezlockeHD</td>
+        <td>Castform</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/bastiodon.png" alt="Bastiodon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/hoopa.png" alt="Hoopa">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/castform.png" alt="Castform">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>1</td>
+        <td>?</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Basalofut/JetsetDaniel</td>
+        <td>Jolteon</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/bastiodon.png" alt="Bastiodon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/politoed.png" alt="Politoed">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/jolteon.png" alt="Jolteon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ledian.png" alt="Ledian">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>2</td>
+        <td>8</td>
+        <td><a class="button" href="https://www.youtube.com/playlist?list=PLFGEKoylIyJwcJ1IqdeVco1GpccNFcmNo" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Chipmaxxing</td>
+        <td>Gastrodon</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/delphox.png" alt="Delphox">
+            <img src="https://img.pokemondb.net/sprites/home/normal/glaceon.png" alt="Glaceon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gastrodon.png" alt="Gastrodon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/volcarona.png" alt="Volcarona">
+            <img src="https://img.pokemondb.net/sprites/home/normal/weavile.png" alt="Weavile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/archeops.png" alt="Archeops">
+          </div>
+        </td>
+        <td>2.1</td> 
+        <td>1</td>
+        <td>9</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Hermit</td>
+        <td>Infernape</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/infernape.png" alt="Infernape">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chesnaught.png" alt="Chesnaught">
+            <img src="https://img.pokemondb.net/sprites/home/normal/aurorus.png" alt="Aurorus">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" alt="Lumineon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/zekrom.png" alt="Zekrom">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sharpedo.png" alt="Sharpedo">
+          </div>
+        </td>
+        <td>2.2</td> 
+        <td>2</td>
+        <td>16</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Dahongluke</td>
+        <td>Salamence</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/greninja.png" alt="Infernape">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swampert.png" alt="Swampert">
+            <img src="https://img.pokemondb.net/sprites/home/normal/salamence.png" alt="Salamence">
+            <img src="https://img.pokemondb.net/sprites/home/normal/garchomp.png" alt="Garchomp">
+            <img src="https://img.pokemondb.net/sprites/home/normal/steelix.png" alt="Steelix">
+          </div>
+        </td>
+        <td>2.2</td> 
+        <td>1</td>
+        <td>7</td>
+        <td><a class="button" href="https://www.youtube.com/c/dahongluke" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>RWXO</td>
+        <td>Typhlosion</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/typhlosion.png" alt="Typhlosion">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/magcargo.png" alt="Magcargo">
+            <img src="https://img.pokemondb.net/sprites/home/normal/scizor.png" alt="Scizor">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sharpedo.png" alt="Sharpedo">
+            <img src="https://img.pokemondb.net/sprites/home/normal/garchomp.png" alt="Garchomp">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>7</td>
+        <td>25</td>
+        <td><a class="button" href="https://www.twitch.tv/rwxolive" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Lowrey</td>
+        <td>Mega Beedrill</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/beedrill-mega.png" alt="Mega Beedrill">
+            <img src="https://img.pokemondb.net/sprites/home/normal/dugtrio.png" alt="Dugtrio">
+            <img src="https://img.pokemondb.net/sprites/home/normal/kyogre.png" alt="Kyogre">
+            <img src="https://img.pokemondb.net/sprites/home/normal/ledian.png" alt="Ledian">
+            <img src="https://img.pokemondb.net/sprites/home/normal/milotic.png" alt="Milotic">
+            <img src="https://img.pokemondb.net/sprites/home/normal/sharpedo.png" alt="Sharpedo">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>3</td>
+        <td>7</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=Y_ue0m82Vu4" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Wihoui</td>
+        <td>Hitmonlee</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/beedrill-mega.png" alt="Mega Beedrill">
+            <img src="https://img.pokemondb.net/sprites/home/normal/hitmonlee.png" alt="Hitmonlee">
+            <img src="https://img.pokemondb.net/sprites/home/normal/azumarill.png" alt="Azumarill">
+            <img src="https://img.pokemondb.net/sprites/home/normal/rhyperior.png" alt="Rhyperior">
+            <img src="https://img.pokemondb.net/sprites/home/normal/alakazam.png" alt="Alakazam">
+            <img src="https://img.pokemondb.net/sprites/home/normal/dragonite.png" alt="Dragonite">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>15</td>
+        <td>9</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Fial</td>
+        <td>Blaziken</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/tyranitar.png" alt="Tyranitar">
+            <img src="https://img.pokemondb.net/sprites/home/normal/garchomp.png" alt="Garchomp">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swanna.png" alt="swanna">
+            <img src="https://img.pokemondb.net/sprites/home/normal/metagross.png" alt="Metagross">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/chesnaught.png" alt="Chesnaught">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>7</td>
+        <td>10</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+      </tr>
+      <td>Ordeaux</td>
+        <td>Greninja</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/gastrodon.png" alt="Gastrodon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/blaziken.png" alt="Blaziken">
+            <img src="https://img.pokemondb.net/sprites/home/normal/skarmory.png" alt="Skarmory">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/greninja.png" alt="Greninja">
+            <img src="https://img.pokemondb.net/sprites/home/normal/glaceon.png" alt="Glaceon">
+          </div>
+        </td>
+        <td>2.2</td> 
+        <td>5</td>
+        <td>16</td>
+        <td><a class="button" href="https://www.twitch.tv/videos/2174825001" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Snowy17</td>
+        <td>Typhlosion</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/typhlosion.png" alt="Typhlosion">
+            <img src="https://img.pokemondb.net/sprites/home/normal/weavile.png" alt="Weavile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/poliwrath.png" alt="Poliwrath">
+            <img src="https://img.pokemondb.net/sprites/home/normal/uxie.png" alt="Uxie">
+            <img src="https://img.pokemondb.net/sprites/home/normal/steelix.png" alt="Steelix">
+            <img src="https://img.pokemondb.net/sprites/home/normal/zangoose.png" alt="Zangoose">
+          </div>
+        </td>
+        <td>2.2</td> 
+        <td>5</td>
+        <td>16</td>
+        <td><a class="button" href="https://www.twitch.tv/videos/2174825001" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Sonic Fusion</td>
+        <td>Charizard</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/serperior.png" alt="Serperior">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/giratina.png" alt="Giratina">
+            <img src="https://img.pokemondb.net/sprites/home/normal/charizard.png" alt="Charizard">
+            <img src="https://img.pokemondb.net/sprites/home/normal/empoleon.png" alt="Empoleon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/hitmonlee.png" alt="Hitmonlee">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>1</td>
+        <td>10</td>
+        <td><a class="button" href="https://www.youtube.com/watch?v=RvWKs0CHASc" target="_blank">Watch</a></td>
+      </tr>
+      </tr>
+      <td>Murm</td>
+        <td>Hitmonlee</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/altaria.png" alt="Altaria">
+            <img src="https://img.pokemondb.net/sprites/home/normal/xerneas.png" alt="Xerneas">
+            <img src="https://img.pokemondb.net/sprites/home/normal/hitmonlee.png" alt="Hitmonlee">
+            <img src="https://img.pokemondb.net/sprites/home/normal/castform.png" alt="Castform">
+            <img src="https://img.pokemondb.net/sprites/home/normal/glalie.png" alt="Glalie">
+            <img src="https://img.pokemondb.net/sprites/home/normal/roserade.png" alt="Roserade">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>8</td>
+        <td>9</td>
+        <td><a class="button" href="None" target="_blank">Unavailable</a></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
