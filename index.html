@@ -45,9 +45,58 @@
       // re-append rows in new order
       rows.forEach(r => tbody.appendChild(r));
     }
+    function toggleReadMe() {
+      const popup = document.getElementById('readMePopup');
+      if (popup.style.display === 'flex') {
+        popup.style.display = 'none';
+      } else {
+        popup.style.display = 'flex';
+      }
+    }
+
+    // Close popup when clicking outside the content
+    document.addEventListener('click', function(event) {
+      const popup = document.getElementById('readMePopup');
+      const button = document.querySelector('.read-me-btn');
+      const content = document.querySelector('.read-me-content');
+      
+      if (popup && popup.style.display === 'flex' && 
+          !content.contains(event.target) && 
+          !button.contains(event.target)) {
+        popup.style.display = 'none';
+      }
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(event) {
+      const popup = document.getElementById('readMePopup');
+      if (event.key === 'Escape' && popup && popup.style.display === 'flex') {
+        popup.style.display = 'none';
+      }
+    });
   </script>
 </head>
 <body>
+
+  <body>
+  <div class="read-me-container">
+    <button class="read-me-btn" onclick="toggleReadMe()">READ ME</button>
+    <div class="read-me-popup" id="readMePopup">
+      <div class="read-me-content">
+        <h2>About Pokémon Ancestral X - Hall of Fame</h2>
+        <p>This is a community Hall of Fame for players who have completed the Pokémon Ancestral X.</p>
+        <h3>Please Read:</h3>
+        <ul>
+          <li>Getting into the "Hall Of Fame" is not restrictive whatsoever, just play the game how it is intended and nuzlocke it - NO FRAUDING :3 i.e, Cheating more honeys than the games intention, Adding EVs etc.
+            Whether doing completing Ancestral X as a Nuzlocke or Hardcore Nuzlocke will end you up "inducted". 
+            Please ping me @RWXO in the Ancestral X discord with the Version, Attempts, Deaths and a link to your e4 (if applicable)
+          </li>
+        </ul>
+        <button class="close-btn" onclick="toggleReadMe()">Close</button>
+      </div>
+    </div>
+  </div>
+
   <h1>Pokémon Ancestral X - Hall of Fame</h1>
   <nav>
   </nav>
@@ -907,6 +956,23 @@
         <td>8</td>
         <td>6</td>
         <td><a class="button" href="https://youtu.be/jxUZFh3Xzx0" target="_blank">Watch</a></td>
+        </tr>
+      <td>Apollo</td>
+        <td>Swanna</td>
+        <td>
+          <div class="mons">
+            <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" alt="Lumineon">
+            <img src="https://img.pokemondb.net/sprites/home/normal/nidoking.png" alt="Nidoking">
+            <img src="https://img.pokemondb.net/sprites/home/normal/mawile-mega.png" alt="Mawile">
+            <img src="https://img.pokemondb.net/sprites/home/normal/electivire.png" alt="Electivire">
+            <img src="https://img.pokemondb.net/sprites/home/normal/swanna.png" alt="Swanna">
+            <img src="https://img.pokemondb.net/sprites/home/normal/typhlosion.png" alt="Typhlosion">
+          </div>
+        </td>
+        <td>2.3</td> 
+        <td>5</td>
+        <td>12</td>
+        <td><a class="button" href="" target="_blank">Unavailable</a></td>
     </tbody>
   </table>
 </body>

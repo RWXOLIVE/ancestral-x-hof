@@ -92,3 +92,95 @@ a.button {
 a.button:hover {
   background-color: #4d8f4d;
 }
+
+/* READ ME Button and Popup Styles */
+.read-me-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.read-me-btn {
+  background-color: #3c6e36;
+  color: #ffffff;
+  border: 2px solid #3c6e36;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.read-me-btn:hover {
+  background-color: #4d8f4d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.read-me-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1001;
+  justify-content: center;
+  align-items: center;
+}
+
+.read-me-content {
+  background-color: #35373a;
+  border: 3px solid #3c6e36;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: #f0f0f0;
+  box-shadow: 0 0 20px #3c6e36;
+}
+
+.read-me-content h2 {
+  color: #3c6e36;
+  margin-top: 0;
+  border-bottom: 2px solid #3c6e36;
+  padding-bottom: 10px;
+}
+
+.read-me-content h3 {
+  color: #4d8f4d;
+  margin-top: 1.5rem;
+}
+
+.read-me-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.read-me-content li {
+  margin-bottom: 8px;
+}
+
+.close-btn {
+  background-color: #3c6e36;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #4d8f4d;
+}
