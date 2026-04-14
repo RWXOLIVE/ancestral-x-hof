@@ -55,9 +55,12 @@
 
       rows.forEach(row => {
         const playerCell = row.cells[0];
+        row.classList.remove('unique-team-row');
+        row.removeAttribute('title');
         if (!playerCell) return;
         playerCell.classList.remove('unique-team-leader');
         playerCell.removeAttribute('title');
+        playerCell.removeAttribute('data-unique-tooltip');
       });
 
       if (visibleRows.length === 0) return;
@@ -99,8 +102,12 @@
         if (!playerCell) return;
         const uniqueCount = uniqueCounts.get(row) || 0;
         if (uniqueCount === maxUniqueCount) {
+          const tooltipText = `Gold row means this player has one of the most unique Elite Four teams among visible entries (${uniqueCount} Pokemon that appear only once).`;
+          row.classList.add('unique-team-row');
+          row.title = tooltipText;
           playerCell.classList.add('unique-team-leader');
-          playerCell.title = `Gold means this player has one of the most unique Elite Four teams among visible entries (${uniqueCount} Pokemon that appear only once).`;
+          playerCell.title = tooltipText;
+          playerCell.setAttribute('data-unique-tooltip', tooltipText);
         }
       });
     }
