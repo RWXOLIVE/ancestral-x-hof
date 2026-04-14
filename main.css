@@ -185,26 +185,14 @@ a.button:hover {
   background-color: #4d8f4d;
 }
 
-.unique-team-row td {
-  background-color: rgba(212, 175, 55, 0.22) !important;
-  border-bottom-color: #d4af37;
-}
-
-.unique-team-row:hover td {
-  background-color: rgba(212, 175, 55, 0.32) !important;
-}
-
 .unique-team-leader {
   color: #f3d06e !important;
   font-weight: 700;
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
-}
-
-.unique-team-row td:first-child {
   position: relative;
 }
 
-.unique-team-row:hover td:first-child::after {
+.unique-team-leader:hover::after {
   content: attr(data-unique-tooltip);
   position: absolute;
   top: -0.5rem;
@@ -222,12 +210,6 @@ a.button:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
   white-space: normal;
   pointer-events: none;
-}
-
-.unique-team-leader {
-  color: #d4af37;
-  font-weight: 700;
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
 }
 
 .last-updated {

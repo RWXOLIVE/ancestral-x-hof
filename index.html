@@ -48,10 +48,9 @@
       updateUniqueTeamLeaders();
     }
 
-    // highlights the player(s) with the highest count of unique mons among visible rows
+    // highlights the player(s) with the highest count of unique mons across all rows
     function updateUniqueTeamLeaders() {
       const rows = Array.from(document.querySelectorAll('tbody tr'));
-      const visibleRows = rows.filter(row => row.style.display !== 'none');
 
       rows.forEach(row => {
         const playerCell = row.cells[0];
@@ -63,10 +62,10 @@
         playerCell.removeAttribute('data-unique-tooltip');
       });
 
-      if (visibleRows.length === 0) return;
+      if (rows.length === 0) return;
 
       const frequency = new Map();
-      visibleRows.forEach(row => {
+      rows.forEach(row => {
         const seenInRow = new Set();
         row.querySelectorAll('.mons img[alt]').forEach(img => {
           const mon = img.alt.trim().toLowerCase();
@@ -78,7 +77,7 @@
 
       const uniqueCounts = new Map();
       let maxUniqueCount = 0;
-      visibleRows.forEach(row => {
+      rows.forEach(row => {
         const seenInRow = new Set();
         let uniqueCount = 0;
         row.querySelectorAll('.mons img[alt]').forEach(img => {
@@ -97,14 +96,12 @@
 
       if (maxUniqueCount === 0) return;
 
-      visibleRows.forEach(row => {
+      rows.forEach(row => {
         const playerCell = row.cells[0];
         if (!playerCell) return;
         const uniqueCount = uniqueCounts.get(row) || 0;
         if (uniqueCount === maxUniqueCount) {
-          const tooltipText = `Gold row means this player has one of the most unique Elite Four teams among visible entries (${uniqueCount} Pokemon that appear only once).`;
-          row.classList.add('unique-team-row');
-          row.title = tooltipText;
+          const tooltipText = `Gold name means this player has one of the most unique Elite Four teams overall (${uniqueCount} Pokemon that appear only once across all entries).`;
           playerCell.classList.add('unique-team-leader');
           playerCell.title = tooltipText;
           playerCell.setAttribute('data-unique-tooltip', tooltipText);
