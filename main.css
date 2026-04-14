@@ -184,6 +184,13 @@ a.button:hover {
 .close-btn:hover {
   background-color: #4d8f4d;
 }
+
+.last-updated {
+  text-align: center;
+  color: #a9c7a2;
+  margin: -1rem 0 1.5rem 0;
+  font-size: 0.95rem;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #2b2d30;

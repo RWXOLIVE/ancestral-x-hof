@@ -74,6 +74,21 @@
         popup.style.display = 'none';
       }
     });
+
+    function updateLastUpdated() {
+      const target = document.getElementById('lastUpdated');
+      if (!target) return;
+      const modified = new Date(document.lastModified);
+      target.textContent = modified.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', updateLastUpdated);
   </script>
 </head>
 <body>
@@ -98,6 +113,7 @@
   </div>
 
   <h1>Pokémon Ancestral X - Hall of Fame</h1>
+  <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
   <nav>
   </nav>
   <input type="text" id="searchBar" onkeyup="filterTable()" placeholder="Search for a Pokémon or Player...">
