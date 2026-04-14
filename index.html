@@ -101,7 +101,7 @@
         if (!playerCell) return;
         const uniqueCount = uniqueCounts.get(row) || 0;
         if (uniqueCount === maxUniqueCount) {
-          const tooltipText = `Gold name means this player has one of the most unique Elite Four teams overall (${uniqueCount} Pokemon that appear only once across all entries).`;
+          const tooltipText = 'Gold name means this player has one of the most unique Elite Four teams overall, based on Pokemon that appear only once across all entries.';
           playerCell.classList.add('unique-team-leader');
           playerCell.title = tooltipText;
           playerCell.setAttribute('data-unique-tooltip', tooltipText);
@@ -169,9 +169,9 @@
         <h3>Please Read:</h3>
         <ul>
           <li>Getting into the "Hall Of Fame" is not restrictive whatsoever, just play the game how it is intended and nuzlocke it - NO FRAUDING :3 i.e, Cheating more honeys than the games intention, Adding EVs etc.
-            Whether doing completing Ancestral X as a Nuzlocke or Hardcore Nuzlocke will end you up "inducted". 
-            Please ping me @RWXO in the Ancestral X discord with the Version, Attempts, Deaths and a link to your e4 (if applicable)
+            Whether doing completing Ancestral X as a Nuzlocke or Hardcore Nuzlocke will end you up "inducted".
           </li>
+          <li>Please ping me <strong>@RWXO</strong> in the Ancestral X discord with the Version, Attempts, Deaths and a link to your e4 (if applicable).</li>
         </ul>
         <button class="close-btn" onclick="toggleReadMe()">Close</button>
       </div>
