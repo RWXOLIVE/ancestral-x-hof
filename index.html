@@ -20,6 +20,7 @@
         const foundInName = player.includes(input) || mvp.includes(input);
         row.style.display = (foundInMons || foundInName || input === '') ? '' : 'none';
       });
+      updateUniqueTeamLeaders();
     }
 
     // stable numeric sort for a given column index (toggle asc/desc)
@@ -44,6 +45,64 @@
 
       // re-append rows in new order
       rows.forEach(r => tbody.appendChild(r));
+      updateUniqueTeamLeaders();
+    }
+
+    // highlights the player(s) with the highest count of unique mons among visible rows
+    function updateUniqueTeamLeaders() {
+      const rows = Array.from(document.querySelectorAll('tbody tr'));
+      const visibleRows = rows.filter(row => row.style.display !== 'none');
+
+      rows.forEach(row => {
+        const playerCell = row.cells[0];
+        if (!playerCell) return;
+        playerCell.classList.remove('unique-team-leader');
+        playerCell.removeAttribute('title');
+      });
+
+      if (visibleRows.length === 0) return;
+
+      const frequency = new Map();
+      visibleRows.forEach(row => {
+        const seenInRow = new Set();
+        row.querySelectorAll('.mons img[alt]').forEach(img => {
+          const mon = img.alt.trim().toLowerCase();
+          if (!mon || seenInRow.has(mon)) return;
+          seenInRow.add(mon);
+          frequency.set(mon, (frequency.get(mon) || 0) + 1);
+        });
+      });
+
+      const uniqueCounts = new Map();
+      let maxUniqueCount = 0;
+      visibleRows.forEach(row => {
+        const seenInRow = new Set();
+        let uniqueCount = 0;
+        row.querySelectorAll('.mons img[alt]').forEach(img => {
+          const mon = img.alt.trim().toLowerCase();
+          if (!mon || seenInRow.has(mon)) return;
+          seenInRow.add(mon);
+          if (frequency.get(mon) === 1) {
+            uniqueCount += 1;
+          }
+        });
+        uniqueCounts.set(row, uniqueCount);
+        if (uniqueCount > maxUniqueCount) {
+          maxUniqueCount = uniqueCount;
+        }
+      });
+
+      if (maxUniqueCount === 0) return;
+
+      visibleRows.forEach(row => {
+        const playerCell = row.cells[0];
+        if (!playerCell) return;
+        const uniqueCount = uniqueCounts.get(row) || 0;
+        if (uniqueCount === maxUniqueCount) {
+          playerCell.classList.add('unique-team-leader');
+          playerCell.title = `Unique team score: ${uniqueCount}`;
+        }
+      });
     }
     function toggleReadMe() {
       const popup = document.getElementById('readMePopup');
@@ -88,7 +147,10 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', updateLastUpdated);
+    document.addEventListener('DOMContentLoaded', function() {
+      updateLastUpdated();
+      updateUniqueTeamLeaders();
+    });
   </script>
 </head>
 <body>

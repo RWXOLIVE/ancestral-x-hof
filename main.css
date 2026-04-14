@@ -185,6 +185,12 @@ a.button:hover {
   background-color: #4d8f4d;
 }
 
+.unique-team-leader {
+  color: #d4af37;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.35);
+}
+
 .last-updated {
   text-align: center;
   color: #a9c7a2;
