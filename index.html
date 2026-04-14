@@ -142,7 +142,15 @@
       const target = document.getElementById('lastUpdated');
       if (!target) return;
       const modified = new Date(document.lastModified);
-      target.textContent = modified.toLocaleString('en-US', {
+      target.textContent = formatDateTime(modified);
+    }
+
+    function formatDateTime(dateValue) {
+      const date = dateValue instanceof Date ? dateValue : new Date(dateValue);
+      if (Number.isNaN(date.getTime())) {
+        return 'Unknown';
+      }
+      return date.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
         day: '2-digit',
@@ -151,8 +159,49 @@
       });
     }
 
+    function updateLastEntryTimestamp() {
+      const playerTarget = document.getElementById('lastEntryPlayer');
+      const timeTarget = document.getElementById('lastEntryUpdated');
+      if (!playerTarget || !timeTarget) return;
+
+      const rows = Array.from(document.querySelectorAll('tbody tr'));
+      if (rows.length === 0) {
+        playerTarget.textContent = 'No entries yet';
+        timeTarget.textContent = 'Unknown';
+        return;
+      }
+
+      let latestRow = null;
+      let latestDate = null;
+      rows.forEach(row => {
+        const raw = row.getAttribute('data-entry-at');
+        if (!raw) return;
+        const parsed = new Date(raw);
+        if (Number.isNaN(parsed.getTime())) return;
+        if (!latestDate || parsed > latestDate) {
+          latestDate = parsed;
+          latestRow = row;
+        }
+      });
+
+      const fallbackRow = rows[rows.length - 1];
+      const fallbackRaw = fallbackRow.getAttribute('data-entry-at');
+      const fallbackDate = fallbackRaw ? new Date(fallbackRaw) : null;
+      const fallbackHasValidDate = !!fallbackDate && !Number.isNaN(fallbackDate.getTime());
+
+      if (!latestRow || (fallbackRow !== latestRow && !fallbackHasValidDate)) {
+        latestRow = fallbackRow;
+        latestDate = new Date(document.lastModified);
+      }
+
+      const playerCell = latestRow.cells[0];
+      playerTarget.textContent = playerCell ? playerCell.innerText.trim() : 'Unknown';
+      timeTarget.textContent = formatDateTime(latestDate);
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
       updateLastUpdated();
+      updateLastEntryTimestamp();
       updateUniqueTeamLeaders();
     });
   </script>
@@ -180,6 +229,7 @@
 
   <h1>Pokémon Ancestral X - Hall of Fame</h1>
   <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
+  <p class="last-entry-updated">Last Hall of Fame entry: <span id="lastEntryPlayer">Loading...</span> at <span id="lastEntryUpdated">Loading...</span></p>
   <nav>
   </nav>
   <input type="text" id="searchBar" onkeyup="filterTable()" placeholder="Search for a Pokémon or Player...">
@@ -1182,7 +1232,7 @@
         <td>5</td>
         <td><a class="button" href="" target="_blank">Unavailable</a></td>
       </tr>
-      <tr>
+      <tr data-entry-at="2026-04-14T23:18:51+01:00">
         <td>Tatsu</td>
         <td>Latios</td>
         <td>
