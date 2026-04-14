@@ -100,7 +100,7 @@
         const uniqueCount = uniqueCounts.get(row) || 0;
         if (uniqueCount === maxUniqueCount) {
           playerCell.classList.add('unique-team-leader');
-          playerCell.title = `Unique team score: ${uniqueCount}`;
+          playerCell.title = `Gold means this player has one of the most unique Elite Four teams among visible entries (${uniqueCount} Pokemon that appear only once).`;
         }
       });
     }
