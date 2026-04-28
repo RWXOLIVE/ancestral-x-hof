@@ -171,28 +171,11 @@
         return;
       }
 
-      let latestRow = null;
-      let latestDate = null;
-      rows.forEach(row => {
-        const raw = row.getAttribute('data-entry-at');
-        if (!raw) return;
-        const parsed = new Date(raw);
-        if (Number.isNaN(parsed.getTime())) return;
-        if (!latestDate || parsed > latestDate) {
-          latestDate = parsed;
-          latestRow = row;
-        }
-      });
-
-      const fallbackRow = rows[rows.length - 1];
-      const fallbackRaw = fallbackRow.getAttribute('data-entry-at');
-      const fallbackDate = fallbackRaw ? new Date(fallbackRaw) : null;
-      const fallbackHasValidDate = !!fallbackDate && !Number.isNaN(fallbackDate.getTime());
-
-      if (!latestRow || (fallbackRow !== latestRow && !fallbackHasValidDate)) {
-        latestRow = fallbackRow;
-        latestDate = new Date(document.lastModified);
-      }
+      const latestRow = rows[rows.length - 1];
+      const rawEntryTime = latestRow.getAttribute('data-entry-at');
+      const parsedEntryTime = rawEntryTime ? new Date(rawEntryTime) : null;
+      const hasValidEntryTime = !!parsedEntryTime && !Number.isNaN(parsedEntryTime.getTime());
+      const latestDate = hasValidEntryTime ? parsedEntryTime : new Date(document.lastModified);
 
       const playerCell = latestRow.cells[0];
       playerTarget.textContent = playerCell ? playerCell.innerText.trim() : 'Unknown';
@@ -1250,7 +1233,7 @@
         <td>9</td>
         <td><a class="button" href="https://www.twitch.tv/videos/2742406754" target="_blank">Watch</a></td>
       </tr>
-      <tr data-entry-at="2026-04-28T00:00:00-04:00">
+      <tr>
         <td>Moro</td>
         <td>Charizard X</td>
         <td>
