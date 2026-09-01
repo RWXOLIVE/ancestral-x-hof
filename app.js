@@ -29,9 +29,13 @@ function getDataRows(table) {
   return Array.from(table?.tBodies[0]?.rows || []).filter((row) => !row.classList.contains('empty-row'));
 }
 
+function getGameRows(game) {
+  return Array.from(document.querySelectorAll(`table[data-hof-table][data-game="${game}"]`))
+    .flatMap((table) => getDataRows(table));
+}
+
 function updatePanelStats(game) {
-  const table = document.getElementById(`${game}Table`);
-  const rows = getDataRows(table);
+  const rows = getGameRows(game);
   const versions = rows
     .map((row) => Number.parseFloat(row.cells[3]?.textContent.trim()))
     .filter(Number.isFinite);
@@ -39,8 +43,6 @@ function updatePanelStats(game) {
   document.getElementById('entryCount').textContent = rows.length;
   document.getElementById('latestVersion').textContent = versions.length ? Math.max(...versions).toFixed(1) : '—';
   document.getElementById('secondaryStatLabel').textContent = versions.length ? 'Latest version' : 'Version';
-  const resultCount = document.getElementById(`${game}ResultCount`);
-  if (resultCount) resultCount.textContent = `${rows.length} ${rows.length === 1 ? 'trainer' : 'trainers'}`;
 }
 
 function setGame(game, { updateUrl = true } = {}) {
@@ -115,6 +117,20 @@ function sortTable(button) {
       return direction === 'asc' ? aValue - bValue : bValue - aValue;
     })
     .forEach((row) => tbody.appendChild(row));
+}
+
+function setYnSheet(sheet) {
+  document.querySelectorAll('[data-yn-sheet]').forEach((tab) => {
+    const selected = tab.dataset.ynSheet === sheet;
+    tab.classList.toggle('is-active', selected);
+    tab.setAttribute('aria-selected', String(selected));
+    tab.tabIndex = selected ? 0 : -1;
+  });
+  document.querySelectorAll('[data-yn-sheet-panel]').forEach((panel) => {
+    const selected = panel.dataset.ynSheetPanel === sheet;
+    panel.classList.toggle('is-active', selected);
+    panel.hidden = !selected;
+  });
 }
 
 function updateUniqueTeamLeaders() {
@@ -196,6 +212,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('[data-table-search]').forEach((input) => input.addEventListener('input', () => filterTable(input)));
   document.querySelectorAll('[data-sort-column]').forEach((button) => button.addEventListener('click', () => sortTable(button)));
+  const ynSheetTabs = Array.from(document.querySelectorAll('[data-yn-sheet]'));
+  ynSheetTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => setYnSheet(tab.dataset.ynSheet));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'ArrowRight' ? (index + 1) % ynSheetTabs.length : (index - 1 + ynSheetTabs.length) % ynSheetTabs.length;
+      ynSheetTabs[next].focus();
+      setYnSheet(ynSheetTabs[next].dataset.ynSheet);
+    });
+  });
   document.querySelector('.site-brand').addEventListener('click', (event) => {
     event.preventDefault();
     setGame('ax');

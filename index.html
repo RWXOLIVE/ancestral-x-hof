@@ -82,7 +82,7 @@
 
       <div class="table-frame">
         <div class="table-scroll">
-          <table id="axTable">
+          <table id="axTable" data-hof-table data-game="ax">
             <thead>
               <tr>
                 <th>Player</th>
@@ -1154,73 +1154,128 @@
         </div>
         <div class="updated-copy">
           <span>Latest entry</span>
-          <strong>DaringTactis · Offline run</strong>
+          <strong>Zhi · Streamed run</strong>
         </div>
       </div>
 
-      <div class="table-toolbar">
-        <label class="search-field" for="ynSearch">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
-          <input type="search" id="ynSearch" data-table-search="ynTable" placeholder="Search the Y Nouveau archive…" autocomplete="off">
-        </label>
-        <p class="result-count" id="ynResultCount" aria-live="polite">2 trainers</p>
+      <div class="run-tabs" role="tablist" aria-label="Y Nouveau run type">
+        <button class="run-tab is-active" id="ynStreamedTab" type="button" role="tab" aria-selected="true" aria-controls="ynStreamedPanel" data-yn-sheet="streamed">Streamed runs <span>1</span></button>
+        <button class="run-tab" id="ynOffstreamTab" type="button" role="tab" aria-selected="false" aria-controls="ynOffstreamPanel" data-yn-sheet="offstream" tabindex="-1">Off-stream runs <span>2</span></button>
       </div>
 
-      <div class="table-frame">
-        <div class="table-scroll">
-          <table id="ynTable">
-            <thead>
-              <tr>
-                <th>Player</th>
-                <th>MVP</th>
-                <th>Team</th>
-                <th>Version</th>
-                <th class="numeric">Attempts</th>
-                <th class="numeric">Deaths</th>
-                <th>Run</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Torsche</td>
-                <td>Blissey</td>
-                <td>
-                  <div class="mons">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/bastiodon.png" loading="lazy" decoding="async" alt="Bastiodon">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/aegislash.png" loading="lazy" decoding="async" alt="Aegislash">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/goodra.png" loading="lazy" decoding="async" alt="Goodra">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/latias.png" loading="lazy" decoding="async" alt="Latias">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/arceus.png" loading="lazy" decoding="async" alt="Arceus">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/mandibuzz.png" loading="lazy" decoding="async" alt="Mandibuzz">
-                  </div>
-                </td>
-                <td>1.1</td>
-                <td>17</td>
-                <td>4</td>
-                <td><span class="button button--disabled">UNAVAILABLE</span></td>
-              </tr>
-              <tr>
-                <td>DaringTactic</td>
-                <td>Ferrothorn / Ninjask / Talonflame</td>
-                <td>
-                  <div class="mons">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/smeargle.png" loading="lazy" decoding="async" alt="Smeargle">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/altaria.png" loading="lazy" decoding="async" alt="Altaria">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/archeops.png" loading="lazy" decoding="async" alt="Archeops">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/ninjask.png" loading="lazy" decoding="async" alt="Ninjask">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/abomasnow.png" loading="lazy" decoding="async" alt="Abomasnow">
-                    <img src="https://img.pokemondb.net/sprites/home/normal/vanilluxe.png" loading="lazy" decoding="async" alt="Vanilluxe">
-                  </div>
-                </td>
-                <td>1.1</td>
-                <td>2</td>
-                <td>11</td>
-                <td><span class="button button--disabled">UNAVAILABLE</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <section class="run-sheet" id="ynOffstreamPanel" role="tabpanel" aria-labelledby="ynOffstreamTab" data-yn-sheet-panel="offstream" hidden>
+        <div class="table-toolbar">
+          <label class="search-field" for="ynOffstreamSearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+            <input type="search" id="ynOffstreamSearch" data-table-search="ynOffstreamTable" placeholder="Search off-stream Y Nouveau runs…" autocomplete="off">
+          </label>
+          <p class="result-count" id="ynOffstreamResultCount" aria-live="polite">2 trainers</p>
         </div>
-      </div>
+
+        <div class="table-frame">
+          <div class="table-scroll">
+            <table id="ynOffstreamTable" data-hof-table data-game="yn">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>MVP</th>
+                  <th>Team</th>
+                  <th>Version</th>
+                  <th class="numeric">Attempts</th>
+                  <th class="numeric">Deaths</th>
+                  <th>Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Torsche</td>
+                  <td>Blissey</td>
+                  <td>
+                    <div class="mons">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/bastiodon.png" loading="lazy" decoding="async" alt="Bastiodon">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/aegislash.png" loading="lazy" decoding="async" alt="Aegislash">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/goodra.png" loading="lazy" decoding="async" alt="Goodra">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/latias.png" loading="lazy" decoding="async" alt="Latias">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/arceus.png" loading="lazy" decoding="async" alt="Arceus">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/mandibuzz.png" loading="lazy" decoding="async" alt="Mandibuzz">
+                    </div>
+                  </td>
+                  <td>1.1</td>
+                  <td>17</td>
+                  <td>4</td>
+                  <td><span class="button button--disabled">No stream</span></td>
+                </tr>
+                <tr>
+                  <td>DaringTactic</td>
+                  <td>Ferrothorn / Ninjask / Talonflame</td>
+                  <td>
+                    <div class="mons">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/smeargle.png" loading="lazy" decoding="async" alt="Smeargle">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/altaria.png" loading="lazy" decoding="async" alt="Altaria">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/archeops.png" loading="lazy" decoding="async" alt="Archeops">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/ninjask.png" loading="lazy" decoding="async" alt="Ninjask">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/abomasnow.png" loading="lazy" decoding="async" alt="Abomasnow">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/vanilluxe.png" loading="lazy" decoding="async" alt="Vanilluxe">
+                    </div>
+                  </td>
+                  <td>1.1</td>
+                  <td>2</td>
+                  <td>11</td>
+                  <td><span class="button button--disabled">No stream</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="run-sheet is-active" id="ynStreamedPanel" role="tabpanel" aria-labelledby="ynStreamedTab" data-yn-sheet-panel="streamed">
+        <div class="table-toolbar">
+          <label class="search-field" for="ynStreamedSearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.15a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+            <input type="search" id="ynStreamedSearch" data-table-search="ynStreamedTable" placeholder="Search streamed Y Nouveau runs…" autocomplete="off">
+          </label>
+          <p class="result-count" id="ynStreamedResultCount" aria-live="polite">1 trainer</p>
+        </div>
+
+        <div class="table-frame">
+          <div class="table-scroll">
+            <table id="ynStreamedTable" data-hof-table data-game="yn">
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>MVP</th>
+                  <th>Team</th>
+                  <th>Version</th>
+                  <th class="numeric">Attempts</th>
+                  <th class="numeric">Deaths</th>
+                  <th>Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Zhi</td>
+                  <td>Cryogonal / Shuckle / Gardevoir</td>
+                  <td>
+                    <div class="mons">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/delphox.png" loading="lazy" decoding="async" alt="">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/zoroark.png" loading="lazy" decoding="async" alt="">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/lumineon.png" loading="lazy" decoding="async" alt="">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/shuckle.png" loading="lazy" decoding="async" alt="">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/cryogonal.png" loading="lazy" decoding="async" alt="">
+                      <img src="https://img.pokemondb.net/sprites/home/normal/excadrill.png" loading="lazy" decoding="async" alt="">
+                    </div>
+                  </td>
+                  <td>1.1.1</td>
+                  <td>2</td>
+                  <td>4</td>
+                  <td><a class="button" href="https://www.youtube.com/watch?v=UNYYiIlApYU" target="_blank" rel="noopener noreferrer">Watch</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -1246,7 +1301,9 @@
       <p class="section-label">A new archive</p>
       <h2>About Y Nouveau HOF</h2>
       <p>This is a community Hall of Fame for players who have completed Pokémon Y Nouveau. All Credit goes to Axyn for Y Nouveau.</p>
-      <div class="dialog-callout">The first Y Nouveau champion has been inducted.</div>
+      <div class="dialog-callout">Play the game as intended and complete it as either a Nuzlocke or Hardcore Nuzlocke.
+        <li>Ping <strong>@RWXO</strong> in the Ancestral X/Y Nouveau Discord with your version, attempts, deaths, and an Elite Four run link when available, if there is no link, you will be marked as "No stream".</li>
+      </div>
     </div>
     <button class="dialog-action" type="button" data-close-about>Got it</button>
   </dialog>
